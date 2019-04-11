@@ -1,13 +1,15 @@
 type User {
   id: ID! @unique
-  email: String @unique
+  email: String! @unique
   name: String!
-  posts: [Post!]!
 }
 
-type Post {
+type Item {
   id: ID! @unique
   title: String!
-  published: Boolean! @default(value: "false")
-  author: User
+  description: String!
+  image: String
+  largeImage: String
+  price: Int!
+  # user: User!
 }
