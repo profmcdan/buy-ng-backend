@@ -42,7 +42,17 @@ async function updateItem(root, args, ctx, info) {
   return item;
 }
 
+async function deleteItem(root, args, ctx, info) {
+  const where = { id: args.id };
+  // find the item
+  // check if they own the item or have the required permision
+  // delete it
+  const item = await ctx.prisma.deleteItem(where, info);
+  return item;
+}
+
 module.exports = {
   createItem,
   updateItem,
+  deleteItem,
 };
