@@ -11,3 +11,5 @@ hooks:
 generate:
   - generator: javascript-client
     output: ./src/generated/prisma-client
+  - generator: graphql-schema
+    output: ./src/generated/prisma.graphql

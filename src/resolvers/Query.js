@@ -21,7 +21,18 @@ function item(root, args, ctx, info) {
   return ctx.prisma.item({ id: args.id });
 }
 
+function itemsConnection(root, args, ctx, info) {
+  return {
+    pageInfo: ctx.prisma.itemsConnection(args).pageInfo(),
+    edges: ctx.prisma.itemsConnection(args).edges(),
+    aggregate: ctx.prisma.itemsConnection(args).aggregate(),
+  };
+  // .aggregate()
+  // .count();
+}
+
 module.exports = {
   items,
   item,
+  itemsConnection,
 };

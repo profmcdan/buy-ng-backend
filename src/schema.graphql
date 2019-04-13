@@ -1,4 +1,4 @@
-# require('./generated/prisma-client')
+# import ItemConnection, ItemWhereInput  from './generated/prisma.graphql'
 
 type User {
   id: ID!
@@ -14,16 +14,6 @@ type Item {
   largeImage: String
   price: Int!
   # user: User!
-}
-
-input ItemWhereUniqueInput {
-  id: ID
-}
-
-type Query {
-  items: [Item!]!
-  item(id: ID!): Item
-  users: [User!]!
 }
 
 type ItemCreateResponse {
@@ -46,6 +36,13 @@ input ItemUpdateInput {
   price: Int
   image: String
   largeImage: String
+}
+
+type Query {
+  items: [Item!]!
+  item(id: ID!): Item
+  users: [User!]!
+  itemsConnection(where: ItemWhereInput): ItemConnection!
 }
 
 type Mutation {
