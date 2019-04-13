@@ -14,7 +14,7 @@ function postsByUser(root, args, context) {
 }
 
 function items(root, args, ctx, info) {
-  return ctx.prisma.items();
+  return ctx.prisma.items({ ...args });
 }
 
 function item(root, args, ctx, info) {

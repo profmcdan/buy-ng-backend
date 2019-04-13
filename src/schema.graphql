@@ -1,20 +1,4 @@
-# import ItemConnection, ItemWhereInput  from './generated/prisma.graphql'
-
-type User {
-  id: ID!
-  email: String!
-  name: String!
-}
-
-type Item {
-  id: ID!
-  title: String!
-  description: String!
-  image: String
-  largeImage: String
-  price: Int!
-  # user: User!
-}
+# import *  from './generated/prisma.graphql'
 
 type ItemCreateResponse {
   success: Boolean!
@@ -22,24 +6,16 @@ type ItemCreateResponse {
   error: Boolean
 }
 
-input CreateItemInput {
-  title: String!
-  description: String!
-  price: Int!
-  image: String
-  largeImage: String
-}
-
-input ItemUpdateInput {
-  title: String
-  description: String
-  price: Int
-  image: String
-  largeImage: String
-}
-
 type Query {
-  items: [Item!]!
+  items(
+    where: ItemWhereInput
+    orderBy: ItemOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Item]!
   item(id: ID!): Item
   users: [User!]!
   itemsConnection(where: ItemWhereInput): ItemConnection!
